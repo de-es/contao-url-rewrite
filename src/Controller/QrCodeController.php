@@ -95,9 +95,7 @@ class QrCodeController
         return $template->getResponse();
     }
 
-    /**
-     * @Route("/url_rewrite_qr_code/{url}", name="url_rewrite_qr_code", methods={"GET"})
-     */
+    #[Route('/url_rewrite_qr_code/{url}', name: 'url_rewrite_qr_code', methods: ['GET'])]
     public function qrCode(Request $request, string $url): Response
     {
         if (!$this->uriSigner->check($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().(null !== ($qs = $request->server->get('QUERY_STRING')) ? '?'.$qs : ''))) {
